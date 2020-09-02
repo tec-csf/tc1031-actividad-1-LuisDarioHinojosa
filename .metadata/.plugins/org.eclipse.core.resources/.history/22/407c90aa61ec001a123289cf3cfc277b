@@ -1,0 +1,14 @@
+/*
+ * Searcher.h
+ *
+ *  Created on: 1 sep. 2020
+ *      Author: luisd
+ */
+
+#ifndef SEARCHER_H_
+#define SEARCHER_H_
+
+class Searcher {
+};
+
+#endif /* SEARCHER_H_ */

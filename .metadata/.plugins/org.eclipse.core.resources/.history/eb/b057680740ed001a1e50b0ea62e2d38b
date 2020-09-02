@@ -1,0 +1,96 @@
+
+/*
+ * OrderAl.h
+ *
+ *  Created on: 1 sep. 2020
+ *      Author: luisd
+ */
+
+#ifndef ORDERAL_H_
+#define ORDERAL_H_
+#include <vector>
+#include <iostream>
+
+template <class T>
+class OrderAl {
+public:
+    static std::vector<T> bubble(std::vector<T>, bool(*)(T,T));
+    static std::vector<T> insersion(std::vector<T>e, bool(*)(T,T));
+
+    static bool asc(T,T);
+    static bool desc(T,T);
+
+
+
+};
+
+
+
+template <class T>
+bool OrderAl<T>::asc(T a, T b)
+{
+    return a < b;
+}
+
+template <class T>
+bool OrderAl<T>::desc(T a, T b)
+{
+    return a > b;
+}
+
+template <class T>
+std::vector<T> OrderAl<T>::bubble(std::vector<T> e, bool compare (T,T))
+{
+    int n = (int) e.size();
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = n-1; j > i; --j) {
+            if ( compare(e[j], e[j-1]) ) {
+                std::swap(e[j], e[j-1]);
+            }
+        }
+    }
+
+    return e;
+}
+
+
+
+template <class T>
+
+std::vector<T> OrderAl<T>::insersion(std::vector<T> e ,bool compare(T,T))
+{
+    int i, key, j,n = e.size();
+    for (i = 1; i < n; i++)
+    {
+        key = e.at(i);
+        j = i - 1;
+
+        while (j >= 0 && compare(e.at(j) , key))
+        {
+            e.at(j+1) = e.at(j);
+            j --;
+        }
+        e.at(j+1) = key;
+    }
+    return e;
+}
+/*
+std::vector<T> OrderAl<T>::insersion(std::vector<T> e,bool compare(T,T)){
+	int i, j, index, n = e.size();
+	for(i = 1; i < n; i++){
+		index = e[i];
+		j = i-1;
+		while(j >= 0 && compare(e[i],index)){
+			e[j+1] = e[j];
+			j--;
+		}
+
+		e[j+1] = index;
+	}
+	return e;
+}
+*/
+
+
+#endif /* ORDERAL_H_ */

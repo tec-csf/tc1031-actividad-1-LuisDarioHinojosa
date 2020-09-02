@@ -1,0 +1,16 @@
+12:17:16 **** Incremental Build of configuration Debug for project SearchAlgorithms ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\SearchAlgorithms.o" "..\\src\\SearchAlgorithms.cpp" 
+In file included from ..\src\SearchAlgorithms.cpp:16:
+..\src\Searcher.h: In static member function 'static int Searcher<T>::sequentialSearchWithMovementForward(std::vector<T>*, T) [with T = int]':
+..\src\Searcher.h:118:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+..\src\Searcher.h: In static member function 'static int Searcher<T>::sequentialSearchWithTransposition(std::vector<T>*, T) [with T = int]':
+..\src\Searcher.h:146:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+g++ -o SearchAlgorithms.exe "src\\SearchAlgorithms.o" 
+
+12:17:19 Build Finished. 0 errors, 2 warnings. (took 2s.214ms)
+

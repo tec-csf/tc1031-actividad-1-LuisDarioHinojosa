@@ -1,0 +1,14 @@
+/*
+ * Search.cpp
+ *
+ *  Created on: 28 ago. 2020
+ *      Author: luisd
+ */
+
+#include "Search.h"
+
+Search::Search() {
+	// TODO Auto-generated constructor stub
+
+}
+

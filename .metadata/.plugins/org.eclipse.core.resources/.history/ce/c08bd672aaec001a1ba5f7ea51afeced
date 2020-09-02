@@ -1,0 +1,190 @@
+//============================================================================
+// Name        : SearchAlgorithms.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <vector>
+#include <stdlib.h>     /* srand, rand */
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <time.h>
+#include <algorithm>
+#include <chrono>
+#include "Searcher.h"
+#include <iterator>
+using namespace std;
+
+
+/*
+
+template <class T>
+class Searcher{
+public:
+
+
+
+
+	int sequentialSearch(vector<T> vec, T value){
+	    int i = 0;
+	    int found = -1;
+
+	    long int size = vec.size();
+
+	    while (found == -1 && i < size) {
+	        if (vec[i] == value) {
+	            found = i;
+	        }
+	        ++i;
+	    }
+
+	    return found;
+	}
+
+
+
+	int orderedSequentialSearch(vector <T> vec, T value){
+
+		sort(vec.begin(),vec.end());
+		// if value is not in the min-max range it is not in the vector
+		int i = 0;
+		int found = -1;
+	    long int size = vec.size();
+
+	    while (found == -1 && i < size) {
+	        if (vec[i] == value) {
+	            found = i;
+	        }
+	        ++i;
+	    }
+		return found;
+	}
+
+
+	int binarySearch(vector <T> vec,T value){
+		// Sort Vector
+		int N = vec.size();
+		sort(vec.begin(),vec.end());
+		if (N == 0){
+			return -1;
+		}
+
+		int middle,inf = 0, sup = N-1;
+		do{
+			middle = (inf+sup)/2;
+			if(value > vec[middle]){
+				inf = middle +1;
+			}
+			else{
+				sup = middle -1;
+			}
+
+		}while(vec[middle] != value && inf <= sup);
+
+		if(vec[middle] == value){
+			return middle;
+		}
+		else{
+			return -1;
+		}
+	}
+
+
+
+// I decided to use a pointer because the real vector needs to change.
+int sequentialSearchWithMovementForward(vector <T> *vec,T value){
+	int index = sequentialSearch(*vec,  value);
+	// If the value is not found, you don't need to move any element.
+	if(index == -1 || index == 0){
+		return index;
+	}
+	else if (index >= 0){
+		rightShift(vec,index);
+		return index;
+	}
+}
+
+// Auxiliary Function: Will shift the elements to the right from the first to the index position.
+void rightShift(vector <T>*vec,int index){
+	cout << "Enter" << endl;
+	T indexVal = vec->at(index);
+	for(int i = index; i > 0; i--){
+		vec->at(i) = vec->at(i-1);
+		//cout << i << endl;
+	}
+	vec->at(0) = indexVal;
+
+}
+
+
+
+int sequentialSearchWithTransposition(vector <T> *vec,T value){
+	int index = sequentialSearch(*vec,  value);
+	if(index == -1 || index == 0){
+		return index;
+	}
+	else if(index > 0){
+		swapValues(vec,index,0);
+		return index;
+	}
+}
+
+
+void swapValues(vector <T>*vec,int index1, int index2){
+	T aux = vec->at(index1);
+	vec->at(index1) = vec->at(index2);
+	vec->at(index2) = aux;
+
+
+}
+
+
+
+};
+
+
+
+*/
+
+
+int main() {
+	//Searcher <int> s;
+	// Seed
+    //srand(time(NULL));
+    vector <int> numbers;
+    int N = 10;
+    for (int i = 0; i <N; i++){
+    	numbers.push_back(rand() % 10);
+    }
+    std::cout << "Print 1" << std::endl;
+    std::copy(numbers.begin(),numbers.end(),std::ostream_iterator<float>(std::cout, " "));
+
+    int n;
+    cout << "Enter a Number" << endl;
+    cin >> n;
+
+
+    // Measure execution time
+    vector <int>* loc = & numbers;
+    auto start = chrono::high_resolution_clock::now();
+    //int res = Searcher<int>::sequentialSearch(numbers,n);
+    int res = Searcher<int>::sequentialSearchWithMovementForward(loc,n);
+    auto end = chrono::high_resolution_clock::now();
+
+    //auto duration = duration_cast<microseconds>(stop - start);
+    long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(end-start).count();
+
+    cout << "Index: " << res << endl;
+    cout << "Execution time-> " << microseconds << " microseconds" << endl;
+
+    std::cout << "Print 2" << std::endl;
+    std::copy(numbers.begin(),numbers.end(),std::ostream_iterator<float>(std::cout, " "));
+
+
+
+	return 0;
+}
+
+

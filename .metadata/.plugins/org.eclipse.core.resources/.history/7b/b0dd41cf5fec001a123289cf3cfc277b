@@ -1,0 +1,26 @@
+/*
+ * Searcher.H
+ *
+ *  Created on: 1 sep. 2020
+ *      Author: luisd
+ */
+
+#ifndef SEARCHER_H_
+#define SEARCHER_H_
+#include <iostream>
+#include <vector>
+template <class T>
+class Searcher{
+public:
+	static int sequentialSearch(std::vector<T> vec, T value);
+	static int orderedSequentialSearch(std::vector <T> vec, T value);
+	static int binarySearch(std::vector <T> vec,T value);
+	static int sequentialSearchWithMovementForward(std::vector <T> *vec,T value);
+	// Auxiliary Function: Will shift the elements to the right from the first to the index position.
+	void rightShift(std::vector <T>*vec,int index);
+	static int sequentialSearchWithTransposition(std::vector <T> *vec,T value);
+	void swapValues(std::vector <T>*vec,int index1, int index2);
+};
+
+
+#endif /* SEARCHER_H_ */

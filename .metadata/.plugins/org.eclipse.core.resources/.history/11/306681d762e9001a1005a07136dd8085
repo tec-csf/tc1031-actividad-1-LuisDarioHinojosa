@@ -1,0 +1,20 @@
+/*
+ * Search.h
+ *
+ *  Created on: 28 ago. 2020
+ *      Author: luisd
+ */
+
+#ifndef SEARCH_H_
+#define SEARCH_H_
+
+
+
+template <class T>
+class Search {
+public:
+	Search();
+
+};
+
+#endif /* SEARCH_H_ */
